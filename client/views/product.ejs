@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>product</title>
+  </head>
+  <body>
+    <div>
+      <a href="/create">เพิ่มสินค้า</a>
+      <a href="/category">จัดการประเภทสินค้า</a>
+    </div>
+    <br />
+    <div>
+      <h1>ตารางแสดงสินค้า</h1>
+    </div>
+    <table class="book-table">
+      <thead>
+        <tr>
+          <th>ลำดับ</th>
+          <th>ชื่อสินค้า</th>
+          <th>ราคาสินค้า</th>
+          <th>จำนวนสินค้า</th>
+          <th>ประเภทสินค้า</th>
+          <th>จัดการ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(let i = 0; i < products.length; i++){%>
+        <tr>
+          <td><%= i+1 %></td>
+          <td><%= products[i].pro_name %></td>
+          <td><%= products[i].pro_price %></td>
+          <td><%= products[i].pro_amount %></td>
+          <td><%= products[i].tb_category.cat_name %></td>
+          <td>
+            <a class="link-center" href="/edit/<%= products[i].pro_id  %>"
+              >แก้ไข</a
+            >&nbsp;<a href="/del/<%= products[i].pro_id  %>" class="link-center"
+              >ลบ</a
+            >
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Product</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <div><h1>เพิ่มสินค้า</h1></div>
+    <form action="/create" method="post">
+      <input
+        type="text"
+        name="pro_name"
+        required
+        placeholder="ชื่อสินค้า"
+        id=""
+      />
+      <input
+        type="number"
+        name="pro_price"
+        required
+        placeholder="ราคาสินค้า"
+        id=""
+      />
+
+      <input
+        type="number"
+        name="pro_amount"
+        required
+        placeholder="จำนวนสินค้า"
+        id=""
+      />
+
+      <select name="cat_id" id="cat_id">
+        <option value="0" selected disabled>เลือกประเภทสินค้า</option>
+        <% for(let i = 0; i < category.length; i++){%>
+        <option value="<%= category[i].cat_id %>">
+          <%= category[i].cat_name %>
+        </option>
+        <% } %>
+      </select>
+      <div><input id="btn" type="submit" value="เพิ่มสินค้า"/ ></div>
+    </form>
+    <script>
+      window.addEventListener("change", () => {
+        let cat_id = document.querySelector("#cat_id").value;
+        let btn = document.querySelector("#btn");
+        if (cat_id == 0) {
+          btn.setAttribute("disabled", "true");
+        } else {
+          btn.removeAttribute("disabled");
+        }
+      });
+    </script>
+  </body>
+</html>

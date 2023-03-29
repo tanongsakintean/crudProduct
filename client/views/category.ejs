@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>category</title>
+  </head>
+  <body>
+    <div>
+      <a href="/category/create">เพิ่มประเภทสินค้า</a>
+      <a href="/">จัดการสินค้า</a>
+    </div>
+    <div>
+      <h1>ตารางแสดงประเภทสินค้า</h1>
+    </div>
+    <table class="book-table">
+      <thead>
+        <tr>
+          <th>ลำดับ</th>
+          <th>ชื่อประเภทสินค้า</th>
+          <th>จำนวนสินค้า</th>
+          <th>จัดการ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(let i = 0; i < category.length; i++){%>
+        <tr>
+          <td><%= i+1 %></td>
+          <td><%= category[i].cat_name %></td>
+          <td><%= category[i].cat_totalPro %></td>
+          <td>
+            <a href="/category/list/<%= category[i].cat_id  %>"
+              >สินค้าในประเภท</a
+            >&nbsp;
+            <a href="/category/edit/<%= category[i].cat_id  %>">แก้ไข</a
+            >&nbsp;<a href="/category/del/<%= category[i].cat_id  %>">ลบ</a>
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>

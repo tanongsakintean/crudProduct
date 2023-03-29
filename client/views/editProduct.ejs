@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>edit Product</title>
+  </head>
+  <body>
+    <div><h1>แก้ไขสินค้า</h1></div>
+    <form action="/edit/<%= product.pro_id %>" method="post">
+      <input
+        type="text"
+        name="pro_name"
+        required
+        value="<%= product.pro_name %>"
+        placeholder="ชื่อสินค้า"
+        id=""
+      />
+      <input
+        type="number"
+        name="pro_price"
+        value="<%= product.pro_price %>"
+        required
+        placeholder="ราคาสินค้า"
+        id=""
+      />
+
+      <input
+        type="number"
+        name="pro_amount"
+        value="<%= product.pro_amount %>"
+        required
+        placeholder="จำนวนสินค้า"
+        id=""
+      />
+
+      <select name="cat_id" id="">
+        <option value="0" selected disabled>เลือกประเภทสินค้า</option>
+        <% for(let i = 0; i < category.length; i++){%>
+        <option <%= (product.cat_id == category[i].cat_id) ? 'selected' : '' %>  value="<%= category[i].cat_id %>">
+          <%= category[i].cat_name %>
+        </option>
+        <% } %>
+      </select>
+      <div>
+        <input type="submit" value="แก้ไขสินค้า">
+      </div>
+    </form>
+  </body>
+</html>
